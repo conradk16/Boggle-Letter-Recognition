@@ -83,23 +83,19 @@ class Network:
     
 
     def backprop(self, x, y, regularization_param, n):
-        """Return a tuple ``(b_gradients, w_gradients)`` representing the
-        gradient for the cost function C_x.  ``nabla_b`` and
-        ``nabla_w`` are layer-by-layer lists of numpy arrays, similar
-        to ``self.biases`` and ``self.weights``."""
         b_gradients = [np.zeros(b.shape) for b in self.biases]
         w_gradients = [np.zeros(w.shape) for w in self.weights]
         # feedforward
         activation = x
         activations = [x] # list to store all the activations, layer by layer
-        zs = [] # list to store all the z vectors, layer by layer
+        zs = [] # list to store all the z vectors (inputs to each neuron), layer by layer
         for b, w in zip(self.biases, self.weights):
             z = np.dot(w, activation)+b
             zs.append(z)
             activation = sigmoid(z)
             activations.append(activation)
         # backward pass
-        if self.cost_func == "MLP":
+        if self.cost_func == "MSE":
             delta = (activations[-1] - y) * sigmoid_prime(zs[-1])
         elif self.cost_func == "cross_entropy":
             delta = (activations[-1] - y)
@@ -107,7 +103,7 @@ class Network:
             delta = (activations[-1] - y)
         b_gradients[-1] = delta
         w_gradients[-1] = np.dot(delta, activations[-2].transpose())
-        for l in range(2, self.num_layers):
+        for l in range(2, self.num_layers): #iterate backwards
             z = zs[-l]
             sp = sigmoid_prime(z)
             delta = np.dot(self.weights[-l+1].transpose(), delta) * sp
