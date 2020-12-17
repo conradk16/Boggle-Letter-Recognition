@@ -107,12 +107,6 @@ class Network:
             delta = (activations[-1] - y)
         b_gradients[-1] = delta
         w_gradients[-1] = np.dot(delta, activations[-2].transpose())
-        # Note that the variable l in the loop below is used a little
-        # differently to the notation in Chapter 2 of the book.  Here,
-        # l = 1 means the last layer of neurons, l = 2 is the
-        # second-last layer, and so on.  It's a renumbering of the
-        # scheme in the book, used here to take advantage of the fact
-        # that Python can use negative indices in lists.
         for l in range(2, self.num_layers):
             z = zs[-l]
             sp = sigmoid_prime(z)
