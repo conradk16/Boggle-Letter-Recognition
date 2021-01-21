@@ -9,7 +9,7 @@ import shutil
 import re
 import random
 
-#save jpgs in a directory called "jpg_images" and label each image "<n>.jpg", where is the number of the image
+#save jpgs in a directory called "jpg_images" and label each image "<n>.jpg", where n is the number of the image
 #save labels in a text file with a space separated list of (<lowercaseletterOrientation> elements,where orientations = 0,1,2,3) on each line . One line corresponds to one image. Label file should be called "labels.txt"
 
 letter_length = 30
@@ -226,9 +226,6 @@ with open("training_data.p", "wb") as f:
 
 with open("validation_data.p", "wb") as f:
     pickle.dump(validation_data, f)
-
-with open("test_data.p", "wb") as f:
-    pickle.dump(test_data, f)
 
 '''
 #recover images and take a peek

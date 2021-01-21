@@ -9,7 +9,7 @@ import shutil
 import re
 
 #save network in a file called "saved_network.p"
-#save jpgs in a directory called "jpg_test_images" and label each image "<n>.jpg", where is the number of the image
+#save jpgs in a directory called "jpg_test_images" and label each image "<n>.jpg", where n is the number of the image
 #save labels in a text file with a space separated list of (lowercase) letters on each line. One line corresponds to one image. Label file should be called "labels.txt"
 
 #helper method for debugging
