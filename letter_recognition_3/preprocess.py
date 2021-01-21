@@ -231,7 +231,7 @@ with open("test_data.p", "wb") as f:
     pickle.dump(test_data, f)
 
 '''
-#recover images and take a peekie poo
+#recover images and take a peek
 folders = ["training_images", "validation_images", "test_images"]
 data = []
 pickle_files = ["training_data.p", "validation_data.p", "test_data.p"]
